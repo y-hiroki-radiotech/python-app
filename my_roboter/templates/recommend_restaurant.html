@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block style %}
+/form-yes-or-no {
+.text-align: center;
+}
+.form-yes-or-no ul {
+list-style-type: none;
+}
+.form-yes-or-no li {
+display: inline;
+}
+{% endblock %}
+
+{% block content %}
+
+<div class="display">
+    {{ user_name }}さん
+    私のおすすめのレストランです。
+
+    {% for restaurant in restaurants %}
+    <p>
+        {{ loop.index }}. {{ restaurant }}
+        {% endfor %}
+    </p>
+
+    <div>
+        {{ user_name }}さんのご存知なレストランの評価を教えてくれませんか？
+    </div>
+
+    <form action="/" method="post">
+        <div class="form-yes-or-no">
+            {{ form.value }}
+        </div>
+        {{ form.user_name}}
+        <div>
+            <input type="submit" value="送信" >
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}
